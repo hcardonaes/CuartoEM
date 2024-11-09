@@ -10,6 +10,8 @@ namespace CuartoEM
         {
             InitializeComponent();
             LoadComboBoxData();
+            LoadPersonajesComboBox();
+            LoadTipoRelacionComboBox();
         }
 
         private void LoadComboBoxData()
@@ -20,7 +22,7 @@ namespace CuartoEM
                 try
                 {
                     connection.Open();
-                    string query = "SELECT nombre, apellido FROM personajes"; // Reemplaza 'TablaEjemplo' con tu tabla real
+                    string query = "SELECT nombre, apellido FROM personajes";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         using (SQLiteDataReader reader = command.ExecuteReader())
@@ -31,6 +33,117 @@ namespace CuartoEM
                                 comboBox1.Items.Add(fullName);
                             }
                         }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadPersonajesComboBox()
+        {
+            string connectionString = @"Data Source=E:\DB Browser for SQLite\Historia_Medieval.db;Version=3;";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT id, nombre, apellido FROM personajes";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string fullName = $"{reader["id"]}: {reader["nombre"]} {reader["apellido"]}";
+                                comboBoxPersonaje1.Items.Add(fullName);
+                                comboBoxPersonaje2.Items.Add(fullName);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadTipoRelacionComboBox()
+        {
+            string connectionString = @"Data Source=E:\DB Browser for SQLite\Historia_Medieval.db;Version=3;";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT id, nombre FROM tipos_relaciones_familiares";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string tipoRelacion = $"{reader["id"]}: {reader["nombre"]}";
+                                comboBoxTipoRelacion.Items.Add(tipoRelacion);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private bool ValidarFechas()
+        {
+            DateTime fechaInicio, fechaFin;
+            if (!DateTime.TryParse(textBoxFechaInicio.Text, out fechaInicio))
+            {
+                MessageBox.Show("Fecha de inicio no válida.");
+                return false;
+            }
+            if (!DateTime.TryParse(textBoxFechaFin.Text, out fechaFin))
+            {
+                MessageBox.Show("Fecha de fin no válida.");
+                return false;
+            }
+            if (fechaInicio.Year < 500 || fechaFin.Year < 500)
+            {
+                MessageBox.Show("Las fechas deben ser a partir del siglo VI.");
+                return false;
+            }
+            return true;
+        }
+
+        private void addRelationButton_Click(object sender, EventArgs e)
+        {
+            if (!ValidarFechas())
+            {
+                return;
+            }
+
+            string connectionString = @"Data Source=E:\DB Browser for SQLite\Historia_Medieval.db;Version=3;";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO parentescos (personaje_id1, personaje_id2, tipo_relacion_id, fecha_inicio, fecha_fin) VALUES (@personaje_id1, @personaje_id2, @tipo_relacion_id, @fecha_inicio, @fecha_fin)";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@personaje_id1", comboBoxPersonaje1.SelectedItem.ToString().Split(':')[0]);
+                        command.Parameters.AddWithValue("@personaje_id2", comboBoxPersonaje2.SelectedItem.ToString().Split(':')[0]);
+                        command.Parameters.AddWithValue("@tipo_relacion_id", comboBoxTipoRelacion.SelectedItem.ToString().Split(':')[0]);
+                        command.Parameters.AddWithValue("@fecha_inicio", DateTime.Parse(textBoxFechaInicio.Text));
+                        command.Parameters.AddWithValue("@fecha_fin", DateTime.Parse(textBoxFechaFin.Text));
+
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Relación agregada exitosamente.");
                     }
                 }
                 catch (Exception ex)
@@ -81,32 +194,24 @@ namespace CuartoEM
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=E:\DB Browser for SQLite\Historia_Medieval.db;Version=3;";
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            // Implementa la lógica que deseas que ocurra cuando se haga clic en addButton
+        }
+
+        private void comboBoxTipoRelacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTipoRelacion.SelectedItem.ToString().Contains("esposos"))
             {
-                try
-                {
-                    connection.Open();
-                    string query = "INSERT INTO personajes (nombre, apellido, mote, fecha_nacimiento, fecha_muerte, importancia, biografia) VALUES (@Nombre, @Apellido, @Mote, @FechaNacimiento, @FechaMuerte, @Importancia, @Biografia)";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Nombre", textBox1.Text);
-                        command.Parameters.AddWithValue("@Apellido", textBox2.Text);
-                        command.Parameters.AddWithValue("@Mote", textBox3.Text);
-                        command.Parameters.AddWithValue("@FechaNacimiento", textBox4.Text);
-                        command.Parameters.AddWithValue("@FechaMuerte", textBox5.Text);
-                        command.Parameters.AddWithValue("@Importancia", textBox6.Text);
-                        command.Parameters.AddWithValue("@Biografia", richTextBox1.Text);
-                        command.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("Personaje agregado exitosamente.");
-                    comboBox1.Items.Clear();
-                    LoadComboBoxData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
+                dateTimePickerInicio.Visible = true;
+                dateTimePickerFin.Visible = true;
+                textBoxFechaInicio.Visible = true;
+                textBoxFechaFin.Visible = true;
+            }
+            else
+            {
+                dateTimePickerInicio.Visible = false;
+                dateTimePickerFin.Visible = false;
+                textBoxFechaInicio.Visible = false;
+                textBoxFechaFin.Visible = false;
             }
         }
     }

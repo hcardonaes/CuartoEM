@@ -37,6 +37,14 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.addButton = new System.Windows.Forms.Button();
+            this.comboBoxPersonaje1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPersonaje2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTipoRelacion = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
+            this.addRelationButton = new System.Windows.Forms.Button();
+            this.textBoxFechaInicio = new System.Windows.Forms.TextBox();
+            this.textBoxFechaFin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -108,11 +116,86 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // comboBoxPersonaje1
+            // 
+            this.comboBoxPersonaje1.FormattingEnabled = true;
+            this.comboBoxPersonaje1.Location = new System.Drawing.Point(140, 120);
+            this.comboBoxPersonaje1.Name = "comboBoxPersonaje1";
+            this.comboBoxPersonaje1.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPersonaje1.TabIndex = 9;
+            // 
+            // comboBoxPersonaje2
+            // 
+            this.comboBoxPersonaje2.FormattingEnabled = true;
+            this.comboBoxPersonaje2.Location = new System.Drawing.Point(140, 150);
+            this.comboBoxPersonaje2.Name = "comboBoxPersonaje2";
+            this.comboBoxPersonaje2.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPersonaje2.TabIndex = 10;
+            // 
+            // comboBoxTipoRelacion
+            // 
+            this.comboBoxTipoRelacion.FormattingEnabled = true;
+            this.comboBoxTipoRelacion.Location = new System.Drawing.Point(140, 180);
+            this.comboBoxTipoRelacion.Name = "comboBoxTipoRelacion";
+            this.comboBoxTipoRelacion.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTipoRelacion.TabIndex = 11;
+            this.comboBoxTipoRelacion.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoRelacion_SelectedIndexChanged);
+            // 
+            // dateTimePickerInicio
+            // 
+            this.dateTimePickerInicio.Location = new System.Drawing.Point(140, 210);
+            this.dateTimePickerInicio.Name = "dateTimePickerInicio";
+            this.dateTimePickerInicio.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerInicio.TabIndex = 12;
+            this.dateTimePickerInicio.Visible = false;
+            // 
+            // dateTimePickerFin
+            // 
+            this.dateTimePickerFin.Location = new System.Drawing.Point(140, 240);
+            this.dateTimePickerFin.Name = "dateTimePickerFin";
+            this.dateTimePickerFin.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerFin.TabIndex = 13;
+            this.dateTimePickerFin.Visible = false;
+            // 
+            // addRelationButton
+            // 
+            this.addRelationButton.Location = new System.Drawing.Point(140, 270);
+            this.addRelationButton.Name = "addRelationButton";
+            this.addRelationButton.Size = new System.Drawing.Size(100, 23);
+            this.addRelationButton.TabIndex = 14;
+            this.addRelationButton.Text = "Agregar Relación";
+            this.addRelationButton.UseVisualStyleBackColor = true;
+            this.addRelationButton.Click += new System.EventHandler(this.addRelationButton_Click);
+            // 
+            // textBoxFechaInicio
+            // 
+            this.textBoxFechaInicio.Location = new System.Drawing.Point(140, 305);
+            this.textBoxFechaInicio.Name = "textBoxFechaInicio";
+            this.textBoxFechaInicio.Size = new System.Drawing.Size(200, 20);
+            this.textBoxFechaInicio.TabIndex = 15;
+            this.textBoxFechaInicio.Visible = false;
+            // 
+            // textBoxFechaFin
+            // 
+            this.textBoxFechaFin.Location = new System.Drawing.Point(140, 331);
+            this.textBoxFechaFin.Name = "textBoxFechaFin";
+            this.textBoxFechaFin.Size = new System.Drawing.Size(200, 20);
+            this.textBoxFechaFin.TabIndex = 16;
+            this.textBoxFechaFin.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxFechaFin);
+            this.Controls.Add(this.textBoxFechaInicio);
+            this.Controls.Add(this.addRelationButton);
+            this.Controls.Add(this.dateTimePickerFin);
+            this.Controls.Add(this.dateTimePickerInicio);
+            this.Controls.Add(this.comboBoxTipoRelacion);
+            this.Controls.Add(this.comboBoxPersonaje2);
+            this.Controls.Add(this.comboBoxPersonaje1);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox6);
@@ -126,6 +209,7 @@
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -139,5 +223,13 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.ComboBox comboBoxPersonaje1;
+        private System.Windows.Forms.ComboBox comboBoxPersonaje2;
+        private System.Windows.Forms.ComboBox comboBoxTipoRelacion;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFin;
+        private System.Windows.Forms.Button addRelationButton;
+        private System.Windows.Forms.TextBox textBoxFechaInicio;
+        private System.Windows.Forms.TextBox textBoxFechaFin;
     }
 }
