@@ -107,7 +107,7 @@
             // comboBoxPersonaje1
             // 
             this.comboBoxPersonaje1.FormattingEnabled = true;
-            this.comboBoxPersonaje1.Location = new System.Drawing.Point(318, 80);
+            this.comboBoxPersonaje1.Location = new System.Drawing.Point(284, 80);
             this.comboBoxPersonaje1.Name = "comboBoxPersonaje1";
             this.comboBoxPersonaje1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPersonaje1.TabIndex = 9;
@@ -116,7 +116,7 @@
             // comboBoxPersonaje2
             // 
             this.comboBoxPersonaje2.FormattingEnabled = true;
-            this.comboBoxPersonaje2.Location = new System.Drawing.Point(318, 110);
+            this.comboBoxPersonaje2.Location = new System.Drawing.Point(284, 110);
             this.comboBoxPersonaje2.Name = "comboBoxPersonaje2";
             this.comboBoxPersonaje2.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPersonaje2.TabIndex = 10;
@@ -124,7 +124,7 @@
             // comboBoxTipoRelacion
             // 
             this.comboBoxTipoRelacion.FormattingEnabled = true;
-            this.comboBoxTipoRelacion.Location = new System.Drawing.Point(318, 140);
+            this.comboBoxTipoRelacion.Location = new System.Drawing.Point(284, 140);
             this.comboBoxTipoRelacion.Name = "comboBoxTipoRelacion";
             this.comboBoxTipoRelacion.Size = new System.Drawing.Size(121, 21);
             this.comboBoxTipoRelacion.TabIndex = 11;
@@ -132,7 +132,7 @@
             // 
             // addRelationButton
             // 
-            this.addRelationButton.Location = new System.Drawing.Point(318, 230);
+            this.addRelationButton.Location = new System.Drawing.Point(284, 230);
             this.addRelationButton.Name = "addRelationButton";
             this.addRelationButton.Size = new System.Drawing.Size(100, 23);
             this.addRelationButton.TabIndex = 14;
@@ -142,7 +142,7 @@
             // 
             // textBoxFechaInicio
             // 
-            this.textBoxFechaInicio.Location = new System.Drawing.Point(318, 167);
+            this.textBoxFechaInicio.Location = new System.Drawing.Point(284, 167);
             this.textBoxFechaInicio.Name = "textBoxFechaInicio";
             this.textBoxFechaInicio.Size = new System.Drawing.Size(121, 20);
             this.textBoxFechaInicio.TabIndex = 15;
@@ -150,7 +150,7 @@
             // 
             // textBoxFechaFin
             // 
-            this.textBoxFechaFin.Location = new System.Drawing.Point(318, 193);
+            this.textBoxFechaFin.Location = new System.Drawing.Point(284, 193);
             this.textBoxFechaFin.Name = "textBoxFechaFin";
             this.textBoxFechaFin.Size = new System.Drawing.Size(121, 20);
             this.textBoxFechaFin.TabIndex = 16;
@@ -168,7 +168,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(317, 34);
+            this.label2.Location = new System.Drawing.Point(281, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 18;
@@ -177,7 +177,7 @@
             // comboBoxParentescos
             // 
             this.comboBoxParentescos.FormattingEnabled = true;
-            this.comboBoxParentescos.Location = new System.Drawing.Point(318, 259);
+            this.comboBoxParentescos.Location = new System.Drawing.Point(284, 259);
             this.comboBoxParentescos.Name = "comboBoxParentescos";
             this.comboBoxParentescos.Size = new System.Drawing.Size(200, 21);
             this.comboBoxParentescos.TabIndex = 1;
@@ -187,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(725, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFechaFin);
@@ -210,6 +210,7 @@
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.ComboBox comboBox1;
