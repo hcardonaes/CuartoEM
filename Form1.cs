@@ -668,7 +668,7 @@ namespace CuartoEM
                             {
                                 string fullName = $"{reader["id"]}: {reader["nombre"]} {reader["apellido"]}";
                                 comboBoxPersonajeInstitucion.Items.Add(fullName);
-                                //comboBoxInstitucion.Items.Add(fullName);
+                                comboBoxInstitucion.Items.Add(fullName);
                             }
                         }
                     }
